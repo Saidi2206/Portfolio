@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo"> {{ titre | uppercase}}</span>
+            <form class="mt-3" [formGroup]="produitForm" (ngSubmit)="ajouterProduit()">
+              <div class="mb-3">
+                <input type="text" formControlName="nom" class="form-control form-control-lg" placeholder="Nom">
+                <div class="text-danger"
+                  *ngIf="produitForm.get('nom')?.hasError('required') && produitForm.get('nom')?.touched">
+                  <span>Nom <strong>c'est obligatoire</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" formControlName="prix_unitaire" class="form-control form-control-lg"
+                  placeholder="Prix unitaire">
+                <div class="text-danger"
+                  *ngIf="produitForm.get('prix_unitaire')?.hasError('required') && produitForm.get('prix_unitaire')?.touched">
+                  <span>Prix unitaire<strong>c'est obligatoire</strong></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" formControlName="quantite" class="form-control form-control-lg"
+                  placeholder="Quantité">
+                <div class="text-danger"
+                  *ngIf="produitForm.get('quantite')?.hasError('required') && produitForm.get('quantite')?.touched">
+                  <span>Quantité <strong>c'est obligatoire</strong></span>
+                </div>
+              </div>
+  
+              <div class="mb-3">
+                <button routerLink="/" class="btn btn-secondary btn-lg float-start">REVENIR</button>
+                <button type="submit" [disabled]="produitForm.invalid" class="btn btn-success btn-lg float-end">ACCEPTER
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
